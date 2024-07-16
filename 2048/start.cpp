@@ -92,7 +92,6 @@ void StartWindow::archive_save(Widget &w)
 {
     this->close();
     QString currentPath = QCoreApplication::applicationDirPath();
-    qDebug() << "Current path:" << currentPath;
     std::ifstream infile;
     infile.open(".\\archive.txt",std::ios::in);
     if (infile.is_open()) {
