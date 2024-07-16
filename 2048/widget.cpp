@@ -304,6 +304,7 @@ void Widget::clear()
             num[i][j]=1;
         }
     }
+    Score=0;
 }
 void Widget::Save()
 {
