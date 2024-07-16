@@ -1,6 +1,7 @@
 #include "start.h"
 #include <fstream>
 #include<QIcon>
+#include<sstream>
 StartWindow::StartWindow(Widget &tmpll):w(tmpll)
 {
     int SIZE = 3;
