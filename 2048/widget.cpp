@@ -294,6 +294,17 @@ int Widget::check()
 
     return temp;
 }
+
+void Widget::clear()
+{
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            num[i][j]=1;
+        }
+    }
+}
 void Widget::Save()
 {
     std::ofstream outfile;
@@ -304,6 +315,12 @@ void Widget::Save()
         for(int j=0;j<4;j++)
             outfile<<this->num[i][j]<<"\n";
     }
+
+    clear();
+    create();
+    create();
+    paint();
+
     this->close();
     emit SaveSignal();
 }
