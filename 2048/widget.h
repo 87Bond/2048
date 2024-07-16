@@ -39,6 +39,7 @@ public:
     Widget();
     ~Widget();
 
+    void clear();
     int GetNumber(int a, int b)
     {
         srand(time(0));
