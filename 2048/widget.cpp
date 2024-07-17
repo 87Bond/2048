@@ -309,7 +309,7 @@ void Widget::clear()
 void Widget::Save()
 {
     std::ofstream outfile;
-    outfile.open(".\\archive.txt",std::ios::in);
+    outfile.open(".\\archive.txt");
     outfile<<this->Score<<"\n";
     for(int i=0;i<4;i++)
     {
