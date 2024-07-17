@@ -88,37 +88,22 @@ void StartWindow::archiveGame()
     this->archive_save(w);
 }
 
-void StartWindow::archive_save(Widget &w)
+void Widget::Save()
 {
-    this->close();
-    QString currentPath = QCoreApplication::applicationDirPath();
-    std::ifstream infile;
-    infile.open(".\\archive.txt",std::ios::in);
-    if (infile.is_open()) {
-        std::string line;
-        int x=0;
-        while (std::getline(infile, line)) {
-            if(x==0 && line[0]=='0')
-                break;
-            if(x==0)
-            {
-                int l;
-                std::stringstream stm;
-                stm<<line;
-                stm>>l;
-                w.Score=l;
-            }
-            if(x!=0)
-            {
-                int l;
-                std::stringstream stm;
-                stm<<line;
-                stm>>l;
-                w.num[(x-1)/4][(x-1)%4]=l;
-            }
-            x++;
-        }
+    std::ofstream outfile;
+    outfile.open(".\\archive.txt");
+    outfile<<this->Score<<"\n";
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+            outfile<<this->num[i][j]<<"\n";
     }
-    w.paint();
-    w.show();
+
+    clear();
+    create();
+    create();
+    paint();
+
+    this->close();
+    emit SaveSignal();
 }
